@@ -1,9 +1,42 @@
-# tod: UTOD picker v1 (`utod-picker-12b-v1`)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-white.svg">
+    <img src="assets/logo-black.svg" alt="Dasein" height="56">
+  </picture>
+</p>
 
-A general-purpose decision model with vision. You give it a state (text and, optionally, images), a
-question and N options. It returns a **calibrated probability for every option**. N can be anything
-from 3 to 255 or more, the context is 48k tokens, and nothing is decoded: the answer is read from
-the logits.
+<h1 align="center">TOD · UTOD picker v1</h1>
+
+<p align="center">
+  <b>A general-purpose decision model with vision.</b><br>
+  State + question + N options in → a calibrated probability for every option out.
+</p>
+
+<p align="center">
+  <img alt="model" src="https://img.shields.io/badge/model-utod--picker--12b--v1-000000?style=flat-square">
+  <img alt="base" src="https://img.shields.io/badge/base-gemma--4--12B--it-000000?style=flat-square">
+  <img alt="options" src="https://img.shields.io/badge/options-3%E2%80%A6255%2B-7efb94?style=flat-square&labelColor=000000">
+  <img alt="context" src="https://img.shields.io/badge/context-48k-7efb94?style=flat-square&labelColor=000000">
+  <img alt="vision" src="https://img.shields.io/badge/vision-yes-7efb94?style=flat-square&labelColor=000000">
+</p>
+
+<p align="center">
+  <a href="https://daseinlabs.ai/tod">daseinlabs.ai/tod</a> ·
+  <a href="#03-quickstart">Quickstart</a> ·
+  <a href="#04-results">Results</a> ·
+  <a href="#05-serving">Serving</a>
+</p>
+
+---
+
+| | |
+|---|---|
+| **Any N** | 3 to 255+ options, exact and order-invariant, measured up to N = 300 |
+| **Sees** | images go through Gemma-4's native vision tower; +.17 to +.25 accuracy over the same model text-only |
+| **Calibrated** | raw ECE-db .008 on JevBench; temperatures fit only on our own held-out validation |
+| **No decoding** | the answer is read from the logits; cost is input tokens only |
+
+## `01` What it is
 
 | part | what |
 |---|---|
@@ -12,7 +45,9 @@ the logits.
 | stage-1 retriever | ModernBERT-base dual encoder (572 MB). Trained with InfoNCE plus ANCE hard negatives |
 | temperatures | T1 1.7237, T2 1.4778, T1_ret 0.05. Brier-optimal, fit on 602 held-out VAL rows (never on JevBench) |
 
-## How it decides
+## `02` How it decides
+
+<p align="center"><img src="assets/pipeline.svg" alt="Two-stage pipeline: recall then re-rank" width="100%"></p>
 
 1. **Stage 1 (recall, any N).** Two scores per option: the frozen 12B's pointwise yes/no log-odds
    (prefix KV-cached, one branch per option) and the retriever's cosine score. The top 8 from each
@@ -25,7 +60,7 @@ the logits.
 
 Images go through Gemma-4's native vision tower (AutoProcessor).
 
-## Quickstart
+## `03` Quickstart
 
 ```bash
 pip install -e .                       # or: pip install -r requirements.txt
@@ -52,7 +87,7 @@ probs = picker.predict(
 
 Tests (CPU, no weights needed): `pip install -e '.[test]' && pytest tests -p no:randomly -q`
 
-## Results
+## `04` Results
 
 All numbers are on held-out data. JevBench was never used for training or calibration.
 
@@ -84,7 +119,10 @@ art on JevBench public accuracy: Cygnet, the frozen same-base model, scores 0.87
 the full Jev contract (any N, images, 48k context) with calibration fit only on our own validation
 data, never on the benchmark.
 
-## Serving: read this before you deploy
+## `05` Serving
+
+> [!IMPORTANT]
+> Read this before you deploy.
 
 - **Never use `sdpa` attention on gemma-4-12B.** It gives wrong logits (5–12 log-odds off, even
   unpadded, in any dtype). Use `chunked_eager` (the default; `tod/model/attn_chunked.py`) or
@@ -100,14 +138,14 @@ data, never on the benchmark.
 - **vLLM.** Send `max_tokens=1` with `allowed_token_ids` set to the option letters (both `A` and
   ` A` variants) and logprobs on, then logsumexp the two variants of each letter.
 
-## Licence and use
+## `06` Licence and use
 
 - The adapter and retriever are released under the LICENSE in the bundle; see NOTICE.
 - The base model is governed by the Gemma 4 terms, and the Gemma Prohibited Use Policy applies.
 - Training data is the 2026-09-24 licence-policy mix. JevBench was excluded from both training and
   calibration.
 
-## Layout
+## `07` Layout
 
 ```
 inference.py          CLI over tod.release.load
@@ -116,6 +154,11 @@ tod/eval/             letter_logit (two-stage scorer, prompts, probability math)
 tod/model/            attn_chunked (exact attention for gemma-4)
 tod/train/            pointwise_sft / retriever_sft helpers used at inference
 tests/                CPU unit tests (two-stage math, chunked attention, scorer fixes)
+assets/               logo + pipeline diagram
 ```
 
 The code is copied from `daseinlabs/tod_training@30adf66` (it includes image-path fix 445df3f).
+
+---
+
+<p align="center"><sub>Built by <a href="https://daseinlabs.ai">Dasein Labs</a></sub></p>

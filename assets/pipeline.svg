@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="300" rx="20" fill="#000"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#7efb94"/>
+    </marker>
+  </defs>
+
+  <!-- input -->
+  <text x="40" y="52" fill="#828282" font-size="12" letter-spacing="2">INPUT</text>
+  <rect x="40" y="70" width="180" height="170" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".35"/>
+  <text x="60" y="104" fill="#fff" font-size="16">State</text>
+  <text x="60" y="124" fill="#828282" font-size="12">text · images · 48k ctx</text>
+  <text x="60" y="160" fill="#fff" font-size="16">Question</text>
+  <text x="60" y="196" fill="#fff" font-size="16">N options</text>
+  <text x="60" y="216" fill="#828282" font-size="12">3 … 255+</text>
+
+  <path d="M228 155H282" stroke="#7efb94" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- stage 1 -->
+  <text x="290" y="52" fill="#7efb94" font-size="12" letter-spacing="2">01 · RECALL</text>
+  <rect x="290" y="70" width="230" height="170" rx="14" fill="#0b1a0f" stroke="#7efb94" stroke-opacity=".6"/>
+  <text x="310" y="104" fill="#fff" font-size="16">Pointwise yes/no</text>
+  <text x="310" y="124" fill="#828282" font-size="12">frozen 12B, prefix KV-cached</text>
+  <text x="310" y="152" fill="#7efb94" font-size="16">∪</text>
+  <text x="310" y="180" fill="#fff" font-size="16">Retriever cosine</text>
+  <text x="310" y="200" fill="#828282" font-size="12">ModernBERT dual encoder</text>
+  <text x="310" y="226" fill="#b2ffbf" font-size="12">top-8 each → 16 shortlist</text>
+
+  <path d="M528 155H582" stroke="#7efb94" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- stage 2 -->
+  <text x="590" y="52" fill="#7efb94" font-size="12" letter-spacing="2">02 · RE-RANK</text>
+  <rect x="590" y="70" width="190" height="170" rx="14" fill="#0b1a0f" stroke="#7efb94" stroke-opacity=".6"/>
+  <text x="610" y="104" fill="#fff" font-size="16">Letter read</text>
+  <text x="610" y="124" fill="#828282" font-size="12">gemma-4-12B + LoRA</text>
+  <text x="610" y="160" fill="#fff" font-size="16">One forward</text>
+  <text x="610" y="180" fill="#828282" font-size="12">0 decoded tokens</text>
+  <text x="610" y="216" fill="#b2ffbf" font-size="12">softmax ÷ T2</text>
+
+  <path d="M788 155H842" stroke="#7efb94" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- output -->
+  <text x="850" y="52" fill="#828282" font-size="12" letter-spacing="2">OUTPUT</text>
+  <text x="850" y="112" fill="#fff" font-size="16">p over</text>
+  <text x="850" y="134" fill="#fff" font-size="16">all N</text>
+  <text x="850" y="166" fill="#828282" font-size="12">calibrated</text>
+  <text x="850" y="184" fill="#828282" font-size="12">Σp = 1</text>
+
+  <text x="40" y="276" fill="#828282" font-size="12">For N ≤ 16 stage 1 is skipped: the output is exactly one letter read.</text>
+</svg>

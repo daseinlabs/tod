@@ -45,6 +45,8 @@
 | stage-1 retriever | ModernBERT-base dual encoder (572 MB). Trained with InfoNCE plus ANCE hard negatives |
 | temperatures | T1 1.7237, T2 1.4778, T1_ret 0.05. Brier-optimal, fit on 602 held-out VAL rows (never on JevBench) |
 
+<p align="center"><img src="assets/architecture.svg" alt="Model architecture: Gemma-4 12B with LoRA on q/k/v/o (stage 2) and fully fine-tuned ModernBERT-base retriever (stage 1)" width="100%"></p>
+
 ## `02` How it decides
 
 <p align="center"><img src="assets/pipeline.svg" alt="Two-stage pipeline: recall then re-rank" width="100%"></p>

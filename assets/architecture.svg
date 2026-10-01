@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860" font-family="Arial, Helvetica, sans-serif">
+<rect width="1200" height="860" rx="20" fill="#fff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
+<text x="330" y="52" text-anchor="middle" font-size="22" font-weight="bold" fill="#111">Gemma-4 12B</text>
+<text x="330" y="76" text-anchor="middle" font-size="14" fill="#777">stage 1 recall · stage 2 re-rank · 256k context</text>
+<rect x="230" y="110" width="200" height="40" rx="8" fill="#dcfbe3" stroke="#1f9d4a" stroke-width="2"/>
+<text x="330.0" y="135.0" text-anchor="middle" font-size="15" fill="#137a37" font-weight="bold">Letter / yes-no logits</text>
+<path d="M330 205V152" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="205" width="200" height="30" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="225.0" text-anchor="middle" font-size="14" fill="#222">Final RMSNorm</text>
+<path d="M330 262V237" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="200" y="262" width="260" height="408" rx="16" fill="#f7f7f7" stroke="#aaa" stroke-width="1.4"/>
+<text x="212" y="290" font-size="18" font-weight="bold" fill="#333">48×</text>
+<circle cx="330" cy="290" r="10" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<path d="M325 290H335M330 285V295" stroke="#333" stroke-width="1.4"/>
+<path d="M330 316V302" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="316" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="334.0" text-anchor="middle" font-size="13" fill="#222">RMSNorm</text>
+<path d="M330 356V344" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="356" width="200" height="40" rx="8" fill="#e2d6f5" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="381.0" text-anchor="middle" font-size="15" fill="#222">Feed forward (GELU)</text>
+<path d="M330 410V398" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="410" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="428.0" text-anchor="middle" font-size="13" fill="#222">RMSNorm</text>
+<path d="M330 462V438" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="330" cy="472" r="10" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<path d="M325 472H335M330 467V477" stroke="#333" stroke-width="1.4"/>
+<path d="M330 494V484" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="494" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="512.0" text-anchor="middle" font-size="13" fill="#222">RMSNorm</text>
+<path d="M330 534V522" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="534" width="200" height="44" rx="8" fill="#cfe3f7" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="561.0" text-anchor="middle" font-size="15" fill="#222">Grouped-query attention</text>
+<path d="M330 592V580" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="592" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="610.0" text-anchor="middle" font-size="13" fill="#222">RMSNorm</text>
+<path d="M330 690V620" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="330" cy="640" r="3" fill="#333"/>
+<path d="M330 640H445V472H342" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="330" cy="452" r="3" fill="#333"/>
+<path d="M330 452H445V290H342" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="230" y="690" width="200" height="36" rx="8" fill="#f8d7d7" stroke="#555" stroke-width="1.2"/>
+<text x="330.0" y="713.0" text-anchor="middle" font-size="14" fill="#222">Token embedding layer</text>
+<path d="M330 790V728" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="330" y="808" text-anchor="middle" font-size="14" fill="#555">Text + image tokens</text>
+<path d="M198 130H230" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="190" y="126.5" text-anchor="end" font-size="13" fill="#555">Last token only,</text>
+<text x="190" y="143.5" text-anchor="end" font-size="13" fill="#555">no decoding</text>
+<path d="M198 556H230" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="190" y="544.0" text-anchor="end" font-size="13" fill="#555">16 heads · head dim 256</text>
+<text x="190" y="561.0" text-anchor="end" font-size="13" fill="#555">Sliding window 1,024</text>
+<text x="190" y="578.0" text-anchor="end" font-size="13" fill="#555">5 local : 1 global</text>
+<path d="M198 376H230" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="190" y="381.0" text-anchor="end" font-size="13" fill="#555">Hidden dim 15,360</text>
+<path d="M198 708H230" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="190" y="704.5" text-anchor="end" font-size="13" fill="#555">Vocab 262k</text>
+<text x="190" y="721.5" text-anchor="end" font-size="13" fill="#555">Embedding dim 3,840</text>
+<rect x="478" y="520" width="130" height="26" rx="13" fill="#dcfbe3" stroke="#1f9d4a" stroke-width="1.4"/>
+<text x="543.0" y="538" text-anchor="middle" font-size="13" fill="#137a37" font-weight="bold">+ LoRA q,k,v,o</text>
+<path d="M478 533H430" stroke="#1f9d4a" stroke-width="1.2"/>
+<rect x="478" y="556" width="130" height="26" rx="13" fill="#dcfbe3" stroke="#1f9d4a" stroke-width="1.4"/>
+<text x="543.0" y="574" text-anchor="middle" font-size="13" fill="#137a37" font-weight="bold">chunked_eager</text>
+<path d="M478 569H430" stroke="#1f9d4a" stroke-width="1.2"/>
+<text x="860" y="52" text-anchor="middle" font-size="22" font-weight="bold" fill="#111">ModernBERT-base</text>
+<text x="860" y="76" text-anchor="middle" font-size="14" fill="#777">stage 1 retriever · bi-encoder · 8k context</text>
+<rect x="760" y="110" width="200" height="40" rx="8" fill="#dcfbe3" stroke="#1f9d4a" stroke-width="2"/>
+<text x="860.0" y="135.0" text-anchor="middle" font-size="15" fill="#137a37" font-weight="bold">Mean pool → L2 → cosine</text>
+<path d="M860 205V152" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="205" width="200" height="30" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="225.0" text-anchor="middle" font-size="14" fill="#222">Final LayerNorm</text>
+<path d="M860 262V237" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="730" y="262" width="260" height="408" rx="16" fill="#f7f7f7" stroke="#1f9d4a" stroke-width="2.2"/>
+<text x="742" y="290" font-size="18" font-weight="bold" fill="#333">22×</text>
+<circle cx="860" cy="290" r="10" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<path d="M855 290H865M860 285V295" stroke="#333" stroke-width="1.4"/>
+<path d="M860 400V302" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="356" width="200" height="40" rx="8" fill="#e2d6f5" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="381.0" text-anchor="middle" font-size="15" fill="#222">Feed forward (GeGLU)</text>
+<path d="M860 410V398" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="410" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="428.0" text-anchor="middle" font-size="13" fill="#222">LayerNorm</text>
+<path d="M860 462V438" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="860" cy="472" r="10" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<path d="M855 472H865M860 467V477" stroke="#333" stroke-width="1.4"/>
+<path d="M860 548V484" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="534" width="200" height="44" rx="8" fill="#cfe3f7" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="561.0" text-anchor="middle" font-size="15" fill="#222">Global / local attention</text>
+<path d="M860 592V580" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="592" width="200" height="26" rx="8" fill="#e6e6e6" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="610.0" text-anchor="middle" font-size="13" fill="#222">LayerNorm</text>
+<path d="M860 690V620" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="860" cy="640" r="3" fill="#333"/>
+<path d="M860 640H975V472H872" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<circle cx="860" cy="452" r="3" fill="#333"/>
+<path d="M860 452H975V290H872" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="760" y="690" width="200" height="36" rx="8" fill="#f8d7d7" stroke="#555" stroke-width="1.2"/>
+<text x="860.0" y="713.0" text-anchor="middle" font-size="14" fill="#222">Token embedding layer</text>
+<path d="M860 790V728" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="860" y="808" text-anchor="middle" font-size="14" fill="#555">Query or option text</text>
+<path d="M992 556H960" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="1000" y="544.0" text-anchor="start" font-size="13" fill="#555">12 heads</text>
+<text x="1000" y="561.0" text-anchor="start" font-size="13" fill="#555">Local window 128</text>
+<text x="1000" y="578.0" text-anchor="start" font-size="13" fill="#555">Every 3rd layer global</text>
+<path d="M992 376H960" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="1000" y="381.0" text-anchor="start" font-size="13" fill="#555">Hidden dim 1,152</text>
+<path d="M992 708H960" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="1000" y="704.5" text-anchor="start" font-size="13" fill="#555">Vocab 50k</text>
+<text x="1000" y="721.5" text-anchor="start" font-size="13" fill="#555">Embedding dim 768</text>
+<text x="990" y="254" text-anchor="end" font-size="13" fill="#137a37" font-weight="bold">fully fine-tuned (InfoNCE)</text>
+<rect x="420" y="826" width="16" height="16" rx="4" fill="#dcfbe3" stroke="#1f9d4a" stroke-width="1.6"/>
+<text x="444" y="839" font-size="14" fill="#333">changed by us</text>
+<rect x="580" y="826" width="16" height="16" rx="4" fill="#f7f7f7" stroke="#aaa"/>
+<text x="604" y="839" font-size="14" fill="#333">frozen / unchanged</text>
+</svg>

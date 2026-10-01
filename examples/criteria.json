@@ -1,0 +1,9 @@
+{
+  "state": "Team of 4 needs to ship a CRUD web app in 2 weeks. Nobody has used Rust before; everyone knows Python.",
+  "options": {
+    "django": "Python, batteries-included web framework",
+    "actix": "Rust async web framework",
+    "rails": "Ruby web framework"
+  },
+  "question": "Pick the stack the team should use."
+}

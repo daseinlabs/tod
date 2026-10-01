@@ -1,0 +1,5 @@
+{
+  "state": "A customer writes: 'I was charged twice for the same order last week and need one of the payments returned.'",
+  "options": ["refund_request", "order_status", "cancel_order", "change_address", "card_declined"],
+  "question": "Which intent best matches the customer's message?"
+}

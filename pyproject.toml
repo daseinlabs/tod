@@ -1,0 +1,12 @@
+[project]
+name = "tod"
+version = "1.0.0"
+description = "UTOD picker: calibrated, vision-capable, unbounded-N decision model (gemma-4-12B-it + trained adapter + retriever)"
+requires-python = ">=3.10"
+dependencies = ["torch", "transformers>=5.14", "peft", "safetensors", "pillow"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["tod*"]
